@@ -1,7 +1,7 @@
 /**
  *
- *  Web Starter Kit
- *  Copyright 2015 Google Inc. All rights reserved.
+ *  Meet-Up Event Planner
+ *  Copyright 2015 Justin Varghese John All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -102,9 +102,7 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('dist/styles'));
 });
 
-// Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
-// to enables ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
-// `.babelrc` file.
+// Concatenate and minify JavaScript. Transpiles ES2015 code to ES5.
 gulp.task('scripts', () =>
     gulp.src([
       // Note: Since we are not using useref in the scripts build pipeline,

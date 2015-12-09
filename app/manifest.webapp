@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "Meet-Up Event Planner",
+  "launch_path": "/index.html",
+  "description": "A responsive web application that allows users to establish a meet-up event.",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "Justin Varghese John",
+    "url": "https://github.com/johnjv"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Meet-Up Event Planner",
+      "description": "A responsive web application that allows users to establish a meet-up event."
+    }
+  }
+}

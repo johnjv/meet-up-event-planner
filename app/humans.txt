@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Justin Varghese John -- Developer -- @qiaozhengyi
+
+# THANKS
+
+  Google Web Starter Kit Team
+  Udacity
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, ECMAScript 2015

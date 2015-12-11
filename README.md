@@ -2,7 +2,7 @@
 
 ## Overview
 
-
+A responsive web application that allows the user to establish a meet-up event. 
 
 ## Prerequisites
 

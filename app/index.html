@@ -94,15 +94,23 @@
                 <label class="mdl-textfield__label" for="name">Name...</label>
               </div>
 
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="host" autocomplete="name">
-                <label class="mdl-textfield__label" for="host">Event Host...</label>
+              <div>
+                <input list="event-type">
+                <datalist id="event-type">
+                  <option value="Birthday party"></option>
+                  <option value="Conference talk"></option>
+                  <option value="Wedding"></option>
+                  <option value="Hackathon"></option>
+                  <option value="Video game tournament"></option>
+                  <option value="Concert"></option>
+                  <option value="Book club"></option>
+                </datalist>
               </div>
 
 
-              <div class="mdl-textfield mdl-js-textfield">
-                <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
-                <label class="mdl-textfield__label" for="sample5">Optional message to guests...</label>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="host" autocomplete="name">
+                <label class="mdl-textfield__label" for="host">Event Host...</label>
               </div>
 
               <div>
@@ -114,6 +122,13 @@
                 <label for="end-datetime">End date and time...</label>
                 <input type="datetime-local" id="end-datetime">
               </div>
+
+              <div class="mdl-textfield mdl-js-textfield">
+                <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+                <label class="mdl-textfield__label" for="sample5">Optional message to guests...</label>
+              </div>
+
+              
 
 
             </form>

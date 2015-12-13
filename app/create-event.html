@@ -43,15 +43,13 @@
         padding-left: 1em;
         padding-right: 1em;
     }*/
-
-
     
     .hidden {
         display: none !important;
     }
     
     .card {
-      padding: 1em;
+        padding: 1em;
     }
     
     .card-details {
@@ -137,19 +135,21 @@
     <!-- Material Design icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
-     .mdl-layout__header-row {
-      padding-left: 40px;
+    .mdl-layout__header-row {
+        padding-left: 40px;
     }
+    
     .ribbon {
-  width: 100%;
-  height: 40vh;
-  background-color: #3F51B5;
-  flex-shrink: 0;
-}
-main {
-  margin-top: -35vh;
-  flex-shrink: 0;
-}
+        width: 100%;
+        height: 40vh;
+        background-color: #3F51B5;
+        flex-shrink: 0;
+    }
+    
+    main {
+        margin-top: -35vh;
+        flex-shrink: 0;
+    }
     </style>
 </head>
 
@@ -162,111 +162,140 @@ main {
         </header>
         <div class="ribbon"></div>
         <main class="mdl-layout__content">
-           
             <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-          <div class="mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div class="mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+                        <section class="card">
+                            <h3 class="title-display placeholder">Untitled Event</h3>
+                            <div class="card-details">
+                                <div class="card-detail">
+                                    <div class="card-detail-category">What?</div>
+                                    <div class="placeholder card-detail-actual what">Description</div>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-category">Where?</div>
+                                    <div class="placeholder card-detail-actual where">Place</div>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-category">When?</div>
+                                    <div class="placeholder card-detail-actual when">Time</div>
+                                </div>
+                                <div class="card-detail hidden">
+                                    <div class="card-detail-category">Who?</div>
+                                    <div class="placeholder card-detail-actual who">People</div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <section class="inputs">
+                      <form action="" id="new-event" autocomplete="on">
+                        <h3>Create a new event</h3>
+                          <div class="input split">
+                              <label form="name" class="input-type">Event Name</label>
+                              <div class="input-actual">
+                                  <input id="name" type="text" class="model model-title title">
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <label for="event-type" class="input-type">Event Type</label>
+                              <div class="input-actual">
+                                  <input list="events" id="event-type">
+                                  <datalist id="events" class="model model-type type">
+                                    <option value="Birthday party"></option>
+                                    <option value="Conference talk"></option>
+                                    <option value="Wedding"></option>
+                                    <option value="Hackathon"></option>
+                                    <option value="Video game tournament"></option>
+                                    <option value="Concert"></option>
+                                    <option value="Book club"></option>
+                                  </datalist>
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <label form="host" class="input-type">Host</label>
+                              <div class="input-actual">
+                                  <input id="host" type="text" class="model model-host host">
+                              </div>
+                          </div>
 
-            
-            <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
-              <section class="card">
-                <h3 class="title-display placeholder">Untitled Event</h3>
-                <div class="card-details">
-                    <div class="card-detail">
-                        <div class="card-detail-category">What?</div>
-                        <div class="placeholder card-detail-actual what">Description</div>
-                    </div>
-                    <div class="card-detail">
-                        <div class="card-detail-category">Where?</div>
-                        <div class="placeholder card-detail-actual where">Place</div>
-                    </div>
-                    <div class="card-detail">
-                        <div class="card-detail-category">When?</div>
-                        <div class="placeholder card-detail-actual when">Time</div>
-                    </div>
-                    <div class="card-detail hidden">
-                        <div class="card-detail-category">Who?</div>
-                        <div class="placeholder card-detail-actual who">People</div>
-                    </div>
+                          <div class="input split">
+                            <label for="start-datetime" class="input-type">Start time</label>
+                            <div class="input-actual">
+                            <input type="datetime-local" id="start-datetime">
+                          </div>
+                          </div>
+
+                          <div class="input split">
+                            <label for="end-datetime" class="input-type">End time</label>
+                            <div class="input-actual">
+                            <input type="datetime-local" id="end-datetime">
+                          </div>
+                          </div>
+
+                          <!-- <div class="input split">
+                              <div class="input-type">Start time</div>
+                              <div class="input-actual">
+                                  <input class="model model-startTime input-datetime start-time" type="time">
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <div class="input-type">End time</div>
+                              <div class="input-actual">
+                                  <input class="model model-endTime input-datetime end-time" type="time">
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <div class="input-type">Day</div>
+                              <div class="input-actual">
+                                  <select class="model model-startDay input-datetime day" type="text"></select>
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <div class="input-type">Month</div>
+                              <div class="input-actual">
+                                  <select class="model model-startMonth input-datetime month" type="text"></select>
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <div class="input-type">Year</div>
+                              <div class="input-actual">
+                                  <select class="model model-startYear input-datetime year" type="text"></select>
+                              </div>
+                          </div> -->
+                          <div class="input split">
+                              <div class="input-type">Description</div>
+                              <div class="input-actual">
+                                  <input type="text" class="model model-description">
+                              </div>
+                          </div>
+                          <div class="input split">
+                              <div class="input-type">Location</div>
+                              <div class="input-actual">
+                                  <input type="text" class="model model-location">
+                              </div>
+                          </div>
+                          <div class="input full">
+                              <div class="input-type">Attendee email addresses</div>
+                              <div class="input-actual">
+                                  <input class="new-guest" type="text">
+                              </div>
+                          </div>
+                          <button id="create" style="margin-left: 1em;">Create event</button>
+                          <div class="attendees" style="margin-left: 1em;"></div>
+                          <label>Show attendees in the invite?
+                              <input type="checkbox">
+                          </label>
+                          <div class="error-message"></div>
+                          <div>
+                            <button type="submit" value="Submit" form="new-event" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                              Create Event
+                            </button>
+                          </div>
+                        </form>
+                    </section>
                 </div>
-            </section>
-          </div>
-            <section class="inputs">
-                <div class="input split">
-                    <div class="input-type">Event Name</div>
-                    <div class="input-actual">
-                        <input type="text" class="model model-title title">
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Event Type</div>
-                    <div class="input-actual">
-                        <select type="text" class="model model-type type">
-                            <option>Party</option>
-                            <option>Meeting</option>
-                            <option>Conference Talk</option>
-                            <option>Sports Game</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Start time</div>
-                    <div class="input-actual">
-                        <input class="model model-startTime input-datetime start-time" type="time">
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">End time</div>
-                    <div class="input-actual">
-                        <input class="model model-endTime input-datetime end-time" type="time">
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Day</div>
-                    <div class="input-actual">
-                        <select class="model model-startDay input-datetime day" type="text"></select>
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Month</div>
-                    <div class="input-actual">
-                        <select class="model model-startMonth input-datetime month" type="text"></select>
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Year</div>
-                    <div class="input-actual">
-                        <select class="model model-startYear input-datetime year" type="text"></select>
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Event Description</div>
-                    <div class="input-actual">
-                        <input type="text" class="model model-description">
-                    </div>
-                </div>
-                <div class="input split">
-                    <div class="input-type">Event location</div>
-                    <div class="input-actual">
-                        <input type="text" class="model model-location">
-                    </div>
-                </div>
-                <div class="input full">
-                    <div class="input-type">Attendee email addresses</div>
-                    <div class="input-actual">
-                        <input class="new-guest" type="text">
-                    </div>
-                </div>
-                <button id="create" style="margin-left: 1em;">Create event</button>
-                <div class="attendees" style="margin-left: 1em;"></div>
-                <label>Show attendees in the invite?
-                    <input type="checkbox">
-                </label>
-                <div class="error-message"></div>
-            </section>
-          </div>
             </div>
-            
         </main>
     </div>
     <script>

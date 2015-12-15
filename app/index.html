@@ -82,88 +82,31 @@
       <div class="demo-ribbon"></div>
       <main class="demo-main mdl-layout__content">
 
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <section class="card">
-              <h2 class="title-display placeholder">Untitled Event</h2>
-              <div class="card-details">
-                <div class="card-detail">
-                  <div class="card-detail-category">What?</div>
-                  <div class="placeholder card-detail-actual what">Description</div>
-                </div>
-                <div class="card-detail">
-                  <div class="card-detail-category">Where?</div>
-                  <div class="placeholder card-detail-actual where">Place</div>
-                </div>
-                <div class="card-detail">
-                  <div class="card-detail-category">When?</div>
-                  <div class="placeholder card-detail-actual when">Time</div>
-                </div>
-                <div class="card-detail hidden">
-                  <div class="card-detail-category">Who?</div>
-                  <div class="placeholder card-detail-actual who">People</div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-
         <div class="demo-container mdl-grid">
           <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <h3>Create a new event</h3>
-            <form action="" id="new-event" autocomplete="on">
+            <h3>Register an account</h3>
+            <form action="" id="register" autocomplete="on">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="name">
                 <label class="mdl-textfield__label" for="name">Name...</label>
               </div>
 
-              <div>
-                <label for="event-type">Event type...</label>
-                <input list="events" id="event-type">
-                <datalist id="events">
-                  <option value="Birthday party"></option>
-                  <option value="Conference talk"></option>
-                  <option value="Wedding"></option>
-                  <option value="Hackathon"></option>
-                  <option value="Video game tournament"></option>
-                  <option value="Concert"></option>
-                  <option value="Book club"></option>
-                </datalist>
-              </div>
-
-
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="host" autocomplete="name">
-                <label class="mdl-textfield__label" for="host">Event Host...</label>
-              </div>
-
-              <div>
-                <label for="start-datetime">Start date and time...</label>
-                <input type="datetime-local" id="start-datetime">
-              </div>
-
-              <div>
-                <label for="end-datetime">End date and time...</label>
-                <input type="datetime-local" id="end-datetime">
+                <input class="mdl-textfield__input" type="email" id="email" autocomplete="email">
+                <label class="mdl-textfield__label" for="email">Email...</label>
               </div>
 
               <div>
                 <div class="input-actual">
-                  <label for="new-guest">Attendee email addresses...</label>
-                  <input id="new-guest" type="email">
+                  <label for="password">Password...</label>
+                  <input id="password" type="password">
                 </div>
               </div>
 
-              <div class="mdl-textfield mdl-js-textfield">
-                <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
-                <label class="mdl-textfield__label" for="sample5">Optional message to guests...</label>
-              </div>
-
               <div>
-                <button type="submit" value="Submit" form="new-event" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                  Create Event
+                <button type="submit" value="Submit" form="register" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                  Register
                 </button>
               </div>
 

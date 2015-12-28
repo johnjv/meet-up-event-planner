@@ -87,13 +87,13 @@
                           <div class="input split">
                               <label for="name" class="input-type">Event Name</label>
                               <div class="input-actual">
-                                  <input id="name" type="text" class="model model-title title">
+                                  <input id="name" type="text" class="model model-title title" required>
                               </div>
                           </div>
                           <div class="input split">
                               <label for="event-type" class="input-type">Event Type</label>
                               <div class="input-actual">
-                                  <input list="events" class="model model-type" id="event-type">
+                                  <input list="events" class="model model-type" id="event-type" required>
                                   <datalist id="events" class="model model-type type">
                                     <option value="Birthday party"></option>
                                     <option value="Conference talk"></option>
@@ -108,21 +108,21 @@
                           <div class="input split">
                               <label for="host" class="input-type">Host</label>
                               <div class="input-actual">
-                                  <input id="host" type="text" class="model model-host host">
+                                  <input id="host" type="text" class="model model-host host" required>
                               </div>
                           </div>
 
                           <div class="input split">
                             <label for="start-datetime" class="input-type">Start time</label>
                             <div class="input-actual">
-                            <input type="datetime-local" class="input-datetime" id="start-datetime">
+                            <input type="datetime-local" class="input-datetime" id="start-datetime" required>
                           </div>
                           </div>
 
                           <div class="input split">
                             <label for="end-datetime" class="input-type">End time</label>
                             <div class="input-actual">
-                            <input type="datetime-local" class="input-datetime" id="end-datetime">
+                            <input type="datetime-local" class="input-datetime" id="end-datetime" required>
                           </div>
                           </div>
 
@@ -130,7 +130,7 @@
                           <div class="input split">
                               <label for="location" class="input-type">Location</label>
                               <div class="input-actual">
-                                  <input id="location" type="text" class="model model-location">
+                                  <input id="location" type="text" class="model model-location" required>
                               </div>
                           </div>
                           <div class="input full">

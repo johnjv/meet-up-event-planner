@@ -69,16 +69,29 @@
               <div class="input split">
                   <label for="name" class="input-type">Name</label>
                   <div class="input-actual">
-                      <input name="name" type="text" autocomplete="given-name" required autofocus="autofocus" />
+                      <input id="name" name="name" type="text" autocomplete="given-name" required autofocus="autofocus" />
                   </div>
               </div>
               <div class="input split">
                   <label for="email" class="input-type">Email</label>
                   <div class="input-actual">
-                      <input name="email" type="email" autocomplete="email" required />
+                      <input id="email" name="email" type="email" autocomplete="email" required />
                   </div>
               </div>
-              
+
+              <div class="input split">
+                  <label for="password" class="input-type">Password</label>
+                  <div class="input-actual">
+                      <input id="password" name="password" type="password" autocomplete="new-password" required />
+                  </div>
+              </div>
+              <div class="input split">
+                  <label for="repeat-password" class="input-type">Please re-enter password</label>
+                  <div class="input-actual">
+                      <input id="repeat-password" name="repeat-password" type="password" required />
+                  </div>
+              </div>
+              <br>
               <p>Password should meet the following requirements:</p>
               <ul>
                 <li>16-100 characters (longer is better)</li>
@@ -87,18 +100,6 @@
                 <li>At least one lowercase letter</li>
                 <li>At least one uppercase letter</li>
               </ul>
-              <div class="input split">
-                  <label for="password" class="input-type">Password</label>
-                  <div class="input-actual">
-                      <input name="password" type="password" autocomplete="new-password" required />
-                  </div>
-              </div>
-              <div class="input split">
-                  <label for="repeat-password" class="input-type">Please re-enter password</label>
-                  <div class="input-actual">
-                      <input name="repeat-password" type="password" required />
-                  </div>
-              </div>
 
               <div>
                 <button type="submit" value="Submit" form="register" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">

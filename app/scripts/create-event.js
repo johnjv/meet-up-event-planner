@@ -178,16 +178,16 @@ var APP = (function() {
         displayWithPlaceholder(model.location, locationDisplay, "Place");
     };
 
-    var whenDisplay = document.querySelector('.card-detail-actual.when');
-    getDomNodeArray('.input-datetime').forEach(function(elem) {
-        elem.binding.oninput = function() {
-            // TODO: a bit hacky
-            var timeToDisplay = model.date.value.toDateString() + " from " + model.startTime.value + " to " + model.endTime.value;
-            displayWithPlaceholder({
-                value: timeToDisplay
-            }, whenDisplay, "Time");
-        };
-    });
+    // var whenDisplay = document.querySelector('.card-detail-actual.when');
+    // getDomNodeArray('.input-datetime').forEach(function(elem) {
+    //     elem.binding.oninput = function() {
+    //         // TODO: a bit hacky
+    //         var timeToDisplay = model.date.value.toDateString() + " from " + model.startTime.value + " to " + model.endTime.value;
+    //         displayWithPlaceholder({
+    //             value: timeToDisplay
+    //         }, whenDisplay, "Time");
+    //     };
+    // });
 
     function validate() {
         var self = this;
@@ -267,4 +267,15 @@ var APP = (function() {
         }
     };
 
+    var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-33.8902, 151.1759),
+      new google.maps.LatLng(-33.8474, 151.2631));
+
+    var input = document.getElementById('location');
+    var options = {
+      bounds: defaultBounds,
+      types: ['establishment']
+    };
+
+    autocomplete = new google.maps.places.Autocomplete(input, options);
 })();

@@ -128,11 +128,11 @@ h3.title-display {
     margin-right: auto;
     margin-top: 1em;
     font-size: 1.2em;
-    line-height: 3;
+    line-height: 2;
 }
 
 .input {
-    padding-left: 1em;
+    padding: 0.5em 0 0.5em 0.5em;
 }
 
 .input:nth-child(odd) {
@@ -141,6 +141,7 @@ h3.title-display {
 
 .split {
     display: flex;
+    flex-direction: row;
 }
 
 .input-type:after {
@@ -148,12 +149,25 @@ h3.title-display {
 }
 
 .input.split .input-type {
-    width: 30%;
+    flex-grow: 2;
+    flex-basis: 80px;
 }
 
-@media screen and (min-width: 650px) {
-    .input {
-        /*max-width: 500px;*/
+.input.split .input-actual {
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 440px) {
+    .split {
+        flex-direction: column;
+    }
+    .input.split .input-type {
+        flex-basis: initial;
+        flex-grow: 1;
+    }
+
+    .input.split .input-actual {
+        flex-grow: 1;
     }
 }
 
@@ -166,7 +180,8 @@ h3.title-display {
 .error-message {
     color: red;
 }
-mdl-layout__header-row {
+
+.mdl-layout__header-row {
     padding-left: 40px;
 }
 
@@ -183,4 +198,5 @@ main {
 }
 input {
   padding: 0.4em;
+  width: 90%;
 }

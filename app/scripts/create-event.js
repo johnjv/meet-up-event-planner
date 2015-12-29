@@ -173,10 +173,10 @@ var APP = (function() {
         displayWithPlaceholder(model.host, hostDisplay, "Host");
     };
 
-    model.location.oninput = function() {
-        var locationDisplay = document.querySelector('.card-detail-actual.where');
-        displayWithPlaceholder(model.location, locationDisplay, "Place");
-    };
+    // model.location.oninput = function() {
+    //     var locationDisplay = document.querySelector('.card-detail-actual.where');
+    //     displayWithPlaceholder(model.location, locationDisplay, "Place");
+    // };
 
     // var whenDisplay = document.querySelector('.card-detail-actual.when');
     // getDomNodeArray('.input-datetime').forEach(function(elem) {
@@ -276,6 +276,13 @@ var APP = (function() {
     //   bounds: defaultBounds,
     //   types: ['establishment']
     // };
+    var whereDisplay = document.querySelector('.card-detail-actual.where');
 
-    autocomplete = new google.maps.places.Autocomplete(input);
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', () => {
+      let place = autocomplete.getPlace();
+      displayWithPlaceholder({
+          value: place.formatted_address
+      }, whereDisplay, "Location");
+    });
 })();

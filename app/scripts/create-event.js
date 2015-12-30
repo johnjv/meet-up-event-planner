@@ -208,11 +208,13 @@ var APP = (function() {
         }
     };
 
-
+    /*
+    Set up Google Maps autocomplete location input
+     */
     var input = document.getElementById('location');
     var whereDisplay = document.querySelector('.card-detail-actual.where');
     var autocomplete = new google.maps.places.Autocomplete(input);
-    
+
     autocomplete.addListener('place_changed', () => {
       let place = autocomplete.getPlace();
       displayWithPlaceholder({

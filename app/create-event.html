@@ -92,13 +92,13 @@
                           <div class="input split">
                               <label for="name" class="input-type">Event Name</label>
                               <div class="input-actual">
-                                  <input id="name" type="text" class="model model-title title" required autofocus="autofocus">
+                                  <input id="name" name="name" type="text" class="model model-title title" required autofocus="autofocus">
                               </div>
                           </div>
                           <div class="input split">
                               <label for="event-type" class="input-type">Event Type</label>
                               <div class="input-actual">
-                                  <input list="events" class="model model-type" id="event-type" required>
+                                  <input list="events" name="event-type" class="model model-type" id="event-type" required>
                                   <datalist id="events" class="model model-type type">
                                     <option value="Birthday party"></option>
                                     <option value="Conference talk"></option>
@@ -113,21 +113,21 @@
                           <div class="input split">
                               <label for="host" class="input-type">Host</label>
                               <div class="input-actual">
-                                  <input id="host" type="text" class="model model-host host" required>
+                                  <input id="host" name="host" type="text" class="model model-host host" required>
                               </div>
                           </div>
 
                           <div class="input split">
                             <label for="start-datetime" class="input-type">Start time</label>
                               <div class="input-actual">
-                              <input type="datetime-local" class="model model-starttime" id="start-datetime" required>
+                              <input type="datetime-local" class="model model-starttime" name="start-datetime" id="start-datetime" required>
                             </div>
                           </div>
 
                           <div class="input split">
                             <label for="end-datetime" class="input-type">End time</label>
                             <div class="input-actual">
-                              <input type="datetime-local" class="model model-endtime" id="end-datetime" required>
+                              <input type="datetime-local" class="model model-endtime" name="end-datetime" id="end-datetime" required>
                             </div>
                           </div>
 
@@ -135,61 +135,31 @@
                           <div class="input split">
                               <label for="location" class="input-type">Location</label>
                               <div class="input-actual">
-                                  <input id="location" type="text" class="model model-location" required>
+                                  <input id="location" name="location" type="text" class="model model-location" required>
                               </div>
                           </div>
                           <div class="input full">
                               <label for="new-guest" class="input-type">Attendee email addresses</label>
                               <div class="input-actual">
-                                  <input id="new-guest" class="new-guest" type="email" placeholder="justin@email.com">
+                                  <input id="new-guest" name="new-guest" class="new-guest" type="email" placeholder="justin@email.com">
                               </div>
                           </div>
                           <div class="attendees" style="margin-left: 1em;"></div>
-                          <label>Show attendees in the invite?
-                              <input type="checkbox">
+                          <label for="attendees-list">Show attendees in the invite?
+                              <input id="attendees-list" type="checkbox">
                           </label>
-                          <div class="error-message"></div>
                           <div class="input full">
                               <label for="guest-message" class="input-type">Optional message to guests...</label>
                               <div class="input-actual">
                                 <textarea id="guest-message" type="text" class="model model-description" rows= "3" id="sample5" ></textarea>
                               </div>
                           </div>
+                          <div class="error-message"></div>
                           <div>
                             <button id="create" type="submit" value="Submit" form="new-event" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                               Create Event
                             </button>
                           </div>
-                          <!-- <div class="input split">
-                              <div class="input-type">Start time</div>
-                              <div class="input-actual">
-                                  <input class="model model-startTime input-datetime start-time" type="time">
-                              </div>
-                          </div>
-                          <div class="input split">
-                              <div class="input-type">End time</div>
-                              <div class="input-actual">
-                                  <input class="model model-endTime input-datetime end-time" type="time">
-                              </div>
-                          </div>
-                          <div class="input split">
-                              <div class="input-type">Day</div>
-                              <div class="input-actual">
-                                  <select class="model model-startDay input-datetime day" type="text"></select>
-                              </div>
-                          </div>
-                          <div class="input split">
-                              <div class="input-type">Month</div>
-                              <div class="input-actual">
-                                  <select class="model model-startMonth input-datetime month" type="text"></select>
-                              </div>
-                          </div>
-                          <div class="input split">
-                              <div class="input-type">Year</div>
-                              <div class="input-actual">
-                                  <select class="model model-startYear input-datetime year" type="text"></select>
-                              </div>
-                          </div> -->
                         </form>
                     </section>
                 </div>

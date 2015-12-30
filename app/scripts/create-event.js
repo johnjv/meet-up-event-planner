@@ -35,6 +35,18 @@ var APP = (function() {
             newGuest.value = "";
         }
     };
+    /*
+    Adding functionality to hide/show guest in card-detail preview
+     */
+    var attendeesCheckbox = document.getElementById('attendees-list');
+    var guestsDisplayContainer = document.querySelector('.card-detail.guests');
+    attendeesCheckbox.onclick = function() {
+      if (this.checked === true) {
+        guestsDisplayContainer.classList.remove('hidden')
+      } else {
+        guestsDisplayContainer.classList.add('hidden');
+      }
+    }
 
     /*
     class="model model-*" Refer to inputs by the name after class model-*

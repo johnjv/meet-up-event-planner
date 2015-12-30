@@ -116,7 +116,7 @@ var APP = (function() {
                         self[name].hasChanged = true;
                         self[name] = self[name] || new Binding(elem, value);
                         self[name].value = elem.value;
-                        self.updateCalculations();
+                        //self.updateCalculations();
 
                         // for callbacks
                         self[name].oninput();
@@ -125,18 +125,18 @@ var APP = (function() {
             });
         });
 
-        self.updateCalculations = function() {
-            self.startMin = self.startMin || new Binding(null, self.startTime.value.split(':')[1]);
-            self.startHour = self.startHour || new Binding(null, self.startTime.value.split(':')[0]);
-            self.endMin = self.endMin || new Binding(null, self.endTime.value.split(':')[1]);
-            self.endHour = self.endHour || new Binding(null, self.endTime.value.split(':')[0]);
+        // self.updateCalculations = function() {
+        //     self.startMin = self.startMin || new Binding(null, self.startTime.value.split(':')[1]);
+        //     self.startHour = self.startHour || new Binding(null, self.startTime.value.split(':')[0]);
+        //     self.endMin = self.endMin || new Binding(null, self.endTime.value.split(':')[1]);
+        //     self.endHour = self.endHour || new Binding(null, self.endTime.value.split(':')[0]);
+        //
+        //     self.date = self.date || new Binding();
+        //
+        //     self.date.value = new Date(self.startYear.value, self.startMonth.value, self.startDay.value);
+        // };
 
-            self.date = self.date || new Binding();
-
-            self.date.value = new Date(self.startYear.value, self.startMonth.value, self.startDay.value);
-        };
-
-        self.updateCalculations();
+        //self.updateCalculations();
     };
 
     /*

@@ -17,19 +17,28 @@ var APP = (function() {
      */
     var newGuest = document.querySelector('input.new-guest');
     var people = document.querySelector('.attendees');
+    var guestsDisplay = document.querySelector('.card-detail-actual.guests');
     newGuest.onkeydown = function(evt) {
         if (evt.keyIdentifier === "Enter") {
-            var enteredPerson = document.createElement('div');
-            var deletePerson = document.createElement('button');
+            let enteredPerson = document.createElement('div');
+            let enteredPerson2 = document.createElement('div');
+            let deletePerson = document.createElement('button');
             deletePerson.innerHTML = "-";
             deletePerson.parent = enteredPerson;
 
             deletePerson.onclick = function() {
+                let dataAttr = this.parent.getAttribute('data-guest');
+                let guestToRemove = document.querySelector(`[data-guest="${dataAttr}"]`);
                 people.removeChild(this.parent);
+                guestsDisplay.removeChild(guestToRemove); // remove from card-detail preview
             };
             enteredPerson.innerHTML = newGuest.value;
-            enteredPerson.value = newGuest.value; // for easy access later
+            enteredPerson.setAttribute('data-guest', newGuest.value); // for easy access later
             enteredPerson.appendChild(deletePerson);
+            // add to card-detail preview
+            enteredPerson2.innerHTML = newGuest.value;
+            enteredPerson2.setAttribute('data-guest', newGuest.value); // for easy access later
+            guestsDisplay.appendChild(enteredPerson2);
 
             people.appendChild(enteredPerson);
             newGuest.value = "";

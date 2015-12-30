@@ -60,10 +60,6 @@ html, body {
   padding: 40px 28px;
 }
 
-.demo-content h3 {
-  margin-top: 48px;
-}
-
 .demo-footer {
   padding-left: 40px;
 }
@@ -196,4 +192,8 @@ main {
 input {
   padding: 0.4em;
   width: 90%;
+}
+
+.mdl-layout.view-events section.card {
+  margin-bottom: 2em;
 }

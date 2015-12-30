@@ -13,46 +13,6 @@ var APP = (function() {
     }
 
     /*
-    Generate all the options for the date entries
-     */
-    // var daySelectors = getDomNodeArray('.day');
-    // daySelectors.forEach(function(selectElement) {
-    //     for (day = 1; day < 32; day++) {
-    //         var newOption = document.createElement('option');
-    //         if (day < 10) {
-    //             day = "0" + day;
-    //         } else {
-    //             day = day + "";
-    //         }
-    //         newOption.innerHTML = day;
-    //         selectElement.appendChild(newOption);
-    //     }
-    // });
-    //
-    // var monthSelectors = getDomNodeArray('.month');
-    // monthSelectors.forEach(function(selectElement) {
-    //     for (month = 1; month < 13; month++) {
-    //         var newOption = document.createElement('option');
-    //         if (month < 10) {
-    //             month = "0" + month;
-    //         } else {
-    //             month = month + "";
-    //         }
-    //         newOption.innerHTML = month;
-    //         selectElement.appendChild(newOption);
-    //     }
-    // });
-    //
-    // var yearSelectors = getDomNodeArray('.year');
-    // yearSelectors.forEach(function(selectElement) {
-    //     for (year = 2015; year < 2021; year++) {
-    //         var newOption = document.createElement('option');
-    //         newOption.innerHTML = year + "";
-    //         selectElement.appendChild(newOption);
-    //     }
-    // });
-
-    /*
     Adding guests
      */
     var newGuest = document.querySelector('input.new-guest');
@@ -116,7 +76,6 @@ var APP = (function() {
                         self[name].hasChanged = true;
                         self[name] = self[name] || new Binding(elem, value);
                         self[name].value = elem.value;
-                        //self.updateCalculations();
 
                         // for callbacks
                         self[name].oninput();
@@ -124,19 +83,6 @@ var APP = (function() {
                 }
             });
         });
-
-        // self.updateCalculations = function() {
-        //     self.startMin = self.startMin || new Binding(null, self.startTime.value.split(':')[1]);
-        //     self.startHour = self.startHour || new Binding(null, self.startTime.value.split(':')[0]);
-        //     self.endMin = self.endMin || new Binding(null, self.endTime.value.split(':')[1]);
-        //     self.endHour = self.endHour || new Binding(null, self.endTime.value.split(':')[0]);
-        //
-        //     self.date = self.date || new Binding();
-        //
-        //     self.date.value = new Date(self.startYear.value, self.startMonth.value, self.startDay.value);
-        // };
-
-        //self.updateCalculations();
     };
 
     /*
@@ -183,21 +129,6 @@ var APP = (function() {
         displayWithPlaceholder(model.endtime, endTimeDisplay, "End Time");
     };
 
-    // model.location.oninput = function() {
-    //     var locationDisplay = document.querySelector('.card-detail-actual.where');
-    //     displayWithPlaceholder(model.location, locationDisplay, "Place");
-    // };
-
-    // var whenDisplay = document.querySelector('.card-detail-actual.when');
-    // getDomNodeArray('.input-datetime').forEach(function(elem) {
-    //     elem.binding.oninput = function() {
-    //         // TODO: a bit hacky
-    //         var timeToDisplay = model.date.value.toDateString() + " from " + model.startTime.value + " to " + model.endTime.value;
-    //         displayWithPlaceholder({
-    //             value: timeToDisplay
-    //         }, whenDisplay, "Time");
-    //     };
-    // });
 
     function validate() {
         var self = this;
@@ -277,18 +208,11 @@ var APP = (function() {
         }
     };
 
-    // var defaultBounds = new google.maps.LatLngBounds(
-    //   new google.maps.LatLng(-33.8902, 151.1759),
-    //   new google.maps.LatLng(-33.8474, 151.2631));
 
     var input = document.getElementById('location');
-    // var options = {
-    //   bounds: defaultBounds,
-    //   types: ['establishment']
-    // };
     var whereDisplay = document.querySelector('.card-detail-actual.where');
-
     var autocomplete = new google.maps.places.Autocomplete(input);
+    
     autocomplete.addListener('place_changed', () => {
       let place = autocomplete.getPlace();
       displayWithPlaceholder({

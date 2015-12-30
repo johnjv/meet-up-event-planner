@@ -73,7 +73,11 @@
                                 </div>
                                 <div class="card-detail">
                                     <div class="card-detail-category">When?</div>
-                                    <div class="placeholder card-detail-actual when">Time</div>
+                                    <div class="placeholder card-detail-actual starttime">Start Time</div>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-category">When?</div>
+                                    <div class="placeholder card-detail-actual endtime">End Time</div>
                                 </div>
                                 <div class="card-detail hidden">
                                     <div class="card-detail-category">Who?</div>
@@ -115,16 +119,16 @@
 
                           <div class="input split">
                             <label for="start-datetime" class="input-type">Start time</label>
-                            <div class="input-actual">
-                            <input type="datetime-local" class="input-datetime" id="start-datetime" required>
-                          </div>
+                              <div class="input-actual">
+                              <input type="datetime-local" class="model model-starttime" id="start-datetime" required>
+                            </div>
                           </div>
 
                           <div class="input split">
                             <label for="end-datetime" class="input-type">End time</label>
                             <div class="input-actual">
-                            <input type="datetime-local" class="input-datetime" id="end-datetime" required>
-                          </div>
+                              <input type="datetime-local" class="model model-endtime" id="end-datetime" required>
+                            </div>
                           </div>
 
 

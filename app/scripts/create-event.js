@@ -173,6 +173,16 @@ var APP = (function() {
         displayWithPlaceholder(model.host, hostDisplay, "Host");
     };
 
+    model.starttime.oninput = function() {
+        var startTimeDisplay = document.querySelector('.card-detail-actual.starttime');
+        displayWithPlaceholder(model.starttime, startTimeDisplay, "Start Time");
+    };
+
+    model.endtime.oninput = function() {
+        var endTimeDisplay = document.querySelector('.card-detail-actual.endtime');
+        displayWithPlaceholder(model.endtime, endTimeDisplay, "End Time");
+    };
+
     // model.location.oninput = function() {
     //     var locationDisplay = document.querySelector('.card-detail-actual.where');
     //     displayWithPlaceholder(model.location, locationDisplay, "Place");

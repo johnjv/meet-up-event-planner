@@ -72,8 +72,8 @@ submit.onclick = function () {
   Just checks the first password because the second should be the same when it runs.
    */
   function checkRequirements() {
-    if (firstPassword.length < 16) {
-      firstInputIssuesTracker.addIssue("fewer than 16 characters");
+    if (firstPassword.length < 8) {
+      firstInputIssuesTracker.addIssue("fewer than 8 characters");
     } else if (firstPassword.length > 100) {
       firstInputIssuesTracker.addIssue("greater than 100 characters");
     }

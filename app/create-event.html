@@ -92,13 +92,13 @@
                           <div class="input split">
                               <label for="name" class="input-type">Event Name</label>
                               <div class="input-actual">
-                                  <input id="name" name="name" type="text" class="model model-title title" required autofocus="autofocus">
+                                  <input id="name" name="name" type="text" class="model model-title title" placeholder="Event name" required autofocus="autofocus">
                               </div>
                           </div>
                           <div class="input split">
                               <label for="event-type" class="input-type">Event Type</label>
                               <div class="input-actual">
-                                  <input list="events" name="event-type" class="model model-type" id="event-type" required>
+                                  <input list="events" name="event-type" class="model model-type" placeholder="Event type" id="event-type" required>
                                   <datalist id="events" class="model model-type type">
                                     <option value="Birthday party"></option>
                                     <option value="Conference talk"></option>
@@ -113,7 +113,7 @@
                           <div class="input split">
                               <label for="host" class="input-type">Host</label>
                               <div class="input-actual">
-                                  <input id="host" name="host" type="text" class="model model-host host" required>
+                                  <input id="host" name="host" placeholder="Host name" type="text" class="model model-host host" required>
                               </div>
                           </div>
 
@@ -151,7 +151,7 @@
                           <div class="input full">
                               <label for="guest-message" class="input-type">Optional message to guests...</label>
                               <div class="input-actual">
-                                <textarea id="guest-message" type="text" class="model model-description" rows= "3" id="sample5" ></textarea>
+                                <textarea id="guest-message" type="text" placeholder="Optional guest message..." class="model model-description" rows= "3" id="sample5" ></textarea>
                               </div>
                           </div>
                           <div class="error-message"></div>

@@ -17,6 +17,7 @@
  *
  */
 
+ /* eslint-env browser */
 'use strict';
 
 let firstPasswordInput = document.querySelector('input[name="password"]');
@@ -36,16 +37,16 @@ class IssueTracker {
   }
 
   getIssues() {
-    let message = "";
+    let message = '';
     switch (this.issues.length) {
       case 0:
         // do nothing because message is already ""
         break;
       case 1:
-        message = "Please correct the following issue:\n" + this.issues[0];
+        message = 'Please correct the following issue:\n' + this.issues[0];
         break;
       default:
-        message = "Please correct the following issues:\n" + this.issues.join("\n");
+        message = 'Please correct the following issues:\n' + this.issues.join('\n');
         break;
     }
     return message;
@@ -53,7 +54,7 @@ class IssueTracker {
 
 }
 
-submit.onclick = function () {
+submit.onclick = function() {
   /*
   Don't forget to grab the input's .value!
    */
@@ -73,34 +74,34 @@ submit.onclick = function () {
    */
   function checkRequirements() {
     if (firstPassword.length < 8) {
-      firstInputIssuesTracker.addIssue("fewer than 8 characters");
+      firstInputIssuesTracker.addIssue('fewer than 8 characters');
     } else if (firstPassword.length > 100) {
-      firstInputIssuesTracker.addIssue("greater than 100 characters");
+      firstInputIssuesTracker.addIssue('greater than 100 characters');
     }
 
     if (!firstPassword.match(/[\!\@\#\$\%\^\&\*]/g)) {
-      firstInputIssuesTracker.addIssue("missing a symbol (!, @, #, $, %, ^, &, *)");
+      firstInputIssuesTracker.addIssue('missing a symbol (!, @, #, $, %, ^, &, *)');
     }
 
     if (!firstPassword.match(/\d/g)) {
-      firstInputIssuesTracker.addIssue("missing a number");
+      firstInputIssuesTracker.addIssue('missing a number');
     }
 
     if (!firstPassword.match(/[a-z]/g)) {
-      firstInputIssuesTracker.addIssue("missing a lowercase letter");
+      firstInputIssuesTracker.addIssue('missing a lowercase letter');
     }
 
     if (!firstPassword.match(/[A-Z]/g)) {
-      firstInputIssuesTracker.addIssue("missing an uppercase letter");
+      firstInputIssuesTracker.addIssue('missing an uppercase letter');
     }
 
-    let illegalCharacterGroup = firstPassword.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g)
+    let illegalCharacterGroup = firstPassword.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g);
     if (illegalCharacterGroup) {
-      illegalCharacterGroup.forEach(function (illegalChar) {
-        firstInputIssuesTracker.addIssue("includes illegal character: " + illegalChar);
+      illegalCharacterGroup.forEach(function(illegalChar) {
+        firstInputIssuesTracker.addIssue('includes illegal character: ' + illegalChar);
       });
     }
-  };
+  }
 
   /*
   Here's the first validation check. Gotta make sure they match.
@@ -111,14 +112,14 @@ submit.onclick = function () {
      */
     checkRequirements();
   } else {
-    secondInputIssuesTracker.addIssue("Passwords must match!");
+    secondInputIssuesTracker.addIssue('Passwords must match!');
   }
 
   /*
   Get the validation message strings after all the requirements have been checked.
    */
-  let firstInputIssues = firstInputIssuesTracker.getIssues()
-  let secondInputIssues = secondInputIssuesTracker.getIssues()
+  let firstInputIssues = firstInputIssuesTracker.getIssues();
+  let secondInputIssues = secondInputIssuesTracker.getIssues();
 
   /*
   Let input.setCustomValidity() do its magic :)
@@ -130,6 +131,6 @@ submit.onclick = function () {
   You would probably replace this with a POST message in a real app.
    */
   if (firstInputIssues.length + secondInputIssues.length === 0) {
-    alert("Password change successful!");
+    alert('Password change successful!');
   }
 };

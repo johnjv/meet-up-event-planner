@@ -1,3 +1,4 @@
+/* eslint-env browser */
 (function() {
   /**
    * Creates an Array of DOM nodes that match the selector

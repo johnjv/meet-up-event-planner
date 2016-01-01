@@ -19,7 +19,7 @@
   var people = document.querySelector('.attendees');
   var guestsDisplay = document.querySelector('.card-detail-actual.guests');
   newGuest.onkeydown = function(evt) {
-    if (evt.keyIdentifier === "Enter") {
+    if (evt.keyIdentifier === 'Enter') {
       let enteredPerson = document.createElement('div');
       let enteredPerson2 = document.createElement('div');
       let deletePerson = document.createElement('button');
@@ -83,9 +83,9 @@
               var value = elem.value;
 
               // set default values
-              if (name.indexOf("Month") > -1) {
+              if (name.indexOf('Month') > -1) {
                   value = value - 1;
-              } else if (name.indexOf("Time" > -1)) {
+              } else if (name.indexOf('Time' > -1)) {
                   value = value || '00:00';
               }
 
@@ -113,7 +113,7 @@ function displayWithPlaceholder(inputBinding, displayElem, placeholder) {
     if (displayElem.classList.contains('placeholder')) {
         displayElem.classList.remove('placeholder');
     };
-    if (inputBinding.value === "") {
+    if (inputBinding.value === '') {
         inputBinding.value = placeholder;
         // let the model know that input has gone back to default
         inputBinding.hasChanged = false;
@@ -127,48 +127,48 @@ function displayWithPlaceholder(inputBinding, displayElem, placeholder) {
   // Update the view oninput
   model.title.oninput = function() {
       var titleDisplay = document.querySelector('.title-display');
-      displayWithPlaceholder(model.title, titleDisplay, "Untitled Event");
+      displayWithPlaceholder(model.title, titleDisplay, 'Untitled Event');
   };
 
   model.type.oninput = function() {
       var typeDisplay = document.querySelector('.card-detail-actual.what');
-      displayWithPlaceholder(model.type, typeDisplay, "Description");
+      displayWithPlaceholder(model.type, typeDisplay, 'Description');
   };
 
   model.host.oninput = function() {
       var hostDisplay = document.querySelector('.card-detail-actual.who');
-      displayWithPlaceholder(model.host, hostDisplay, "Host");
+      displayWithPlaceholder(model.host, hostDisplay, 'Host');
   };
 
   model.starttime.oninput = function() {
       var startTimeDisplay = document.querySelector('.card-detail-actual.starttime');
-      displayWithPlaceholder(model.starttime, startTimeDisplay, "Start Time");
+      displayWithPlaceholder(model.starttime, startTimeDisplay, 'Start Time');
   };
 
   model.endtime.oninput = function() {
       var endTimeDisplay = document.querySelector('.card-detail-actual.endtime');
-      displayWithPlaceholder(model.endtime, endTimeDisplay, "End Time");
+      displayWithPlaceholder(model.endtime, endTimeDisplay, 'End Time');
   };
 
 
   function validate() {
       var self = this;
       var allGood = false;
-      var errorMessage = "Please correct the following errors: <br>";
+      var errorMessage = 'Please correct the following errors: <br>';
       var people = getDomNodeArray('.people>div');
 
       var validations = [{
-          errorMessage: "Please include a title.",
+          errorMessage: 'Please include a title.',
           validationMethod: function() {
               return model.title.hasChanged;
           }
       }, {
-          errorMessage: "Please include a description.",
+          errorMessage: 'Please include a description.',
           validationMethod: function() {
               return model.description.hasChanged;
           }
       }, {
-          errorMessage: "Please include guests.",
+          errorMessage: 'Please include guests.',
           validationMethod: function() {
               if (people.length > 0) {
                   return true;
@@ -177,7 +177,7 @@ function displayWithPlaceholder(inputBinding, displayElem, placeholder) {
               }
           }
       }, {
-          errorMessage: "Please include valid email addresses.",
+          errorMessage: 'Please include valid email addresses.',
           validationMethod: function() {
               var areReal = false;
               var emailRegex = new RegExp("^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$");
@@ -225,7 +225,7 @@ function displayWithPlaceholder(inputBinding, displayElem, placeholder) {
           var errorMessage = document.querySelector('.error-message');
           errorMessage.innerHTML = validState.errorMessage;
       } else {
-          alert("Valid form. Thanks for submitting!");
+          alert('Valid form. Thanks for submitting!');
       }
   };
 
@@ -240,6 +240,6 @@ function displayWithPlaceholder(inputBinding, displayElem, placeholder) {
     let place = autocomplete.getPlace();
     displayWithPlaceholder({
         value: place.formatted_address
-    }, whereDisplay, "Location");
+    }, whereDisplay, 'Location');
   });
 })();

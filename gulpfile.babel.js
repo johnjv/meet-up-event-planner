@@ -110,7 +110,8 @@ gulp.task('scripts', () =>
       //       to be correctly concatenated
       './app/scripts/main.js',
       './app/scripts/create-event.js',
-      './app/scripts/register.babel.js'
+      './app/scripts/register.babel.js',
+      './app/scripts/login.babel.js'
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())

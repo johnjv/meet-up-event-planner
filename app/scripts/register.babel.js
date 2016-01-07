@@ -20,6 +20,9 @@
  /* eslint-env browser */
 'use strict';
 
+var firebase = new Firebase("https://meet-up-event-planner.firebaseio.com");
+
+let emailInput = document.querySelector('input[name="email"]');
 let firstPasswordInput = document.querySelector('input[name="password"]');
 let secondPasswordInput = document.querySelector('input[name="repeat-password"]');
 let submit = document.querySelector('button[type="submit"]');
@@ -55,6 +58,7 @@ class IssueTracker {
 }
 
 submit.onclick = function() {
+  event.preventDefault();
   /*
   Don't forget to grab the input's .value!
    */
@@ -131,6 +135,15 @@ submit.onclick = function() {
   You would probably replace this with a POST message in a real app.
    */
   if (firstInputIssues.length + secondInputIssues.length === 0) {
-    alert('Password change successful!');
+    firebase.createUser({
+      email    : emailInput.value,
+      password : firstPasswordInput.value
+    }, function(error, userData) {
+      if (error) {
+        console.log("Error creating user:", error);
+      } else {
+        console.log("Successfully created user account with uid:", userData.uid);
+      }
+    });
   }
 };

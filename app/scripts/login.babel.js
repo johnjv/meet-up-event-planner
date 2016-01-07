@@ -29,7 +29,7 @@ let submit = document.querySelector('button[type="submit"]');
 
 submit.onclick = function() {
   event.preventDefault();
-  ref.authWithPassword({
+  firebase.authWithPassword({
     email    : emailInput.value,
     password : passwordInput.value
   }, function(error, authData) {

@@ -1,0 +1,10 @@
+{
+  "firebase": "meet-up-event-planner",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**",
+    ".git"
+  ]
+}

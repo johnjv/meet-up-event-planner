@@ -22,8 +22,8 @@
 
 var firebase = new Firebase("https://meet-up-event-planner.firebaseio.com");
 
-let emailInput = document.querySelector('input[name="email"]');
-let passwordInput = document.querySelector('input[name="password"]');
+let emailInput = document.querySelector('input[type="email"]');
+let passwordInput = document.querySelector('input[type="password"]');
 let submit = document.querySelector('button[type="submit"]');
 
 

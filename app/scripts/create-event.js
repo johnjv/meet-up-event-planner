@@ -150,6 +150,10 @@
     displayWithPlaceholder(model.title, titleDisplay, 'Untitled Event');
   };
 
+  model.title.onchange = function() {
+    console.log(model.title.hasChanged);
+  };
+
   model.type.oninput = function() {
     var typeDisplay = document.querySelector('.card-detail-actual.what');
     displayWithPlaceholder(model.type, typeDisplay, 'Description');

@@ -18,14 +18,16 @@
  */
 
  /* eslint-env browser */
+ /* global Firebase */
 'use strict';
 
-var firebase = new Firebase("https://meet-up-event-planner.firebaseio.com");
+var firebase = new Firebase('https://meet-up-event-planner.firebaseio.com');
 
 let emailInput = document.querySelector('input[name="email"]');
 let firstPasswordInput = document.querySelector('input[name="password"]');
 let secondPasswordInput = document.querySelector('input[name="repeat-password"]');
 let submit = document.querySelector('button[type="submit"]');
+let validationMessage = document.querySelector('#validation-message');
 
 /*
 I'm using this IssueTracker to help me format my validation messages.
@@ -58,7 +60,6 @@ class IssueTracker {
 }
 
 submit.onclick = function() {
-  event.preventDefault();
   /*
   Don't forget to grab the input's .value!
    */
@@ -136,13 +137,15 @@ submit.onclick = function() {
    */
   if (firstInputIssues.length + secondInputIssues.length === 0) {
     firebase.createUser({
-      email    : emailInput.value,
-      password : firstPasswordInput.value
+      email: emailInput.value,
+      password: firstPasswordInput.value
     }, function(error, userData) {
       if (error) {
-        console.log("Error creating user:", error);
+        validationMessage.innerHTML = error;
+        console.log('Error creating user:', error);
       } else {
-        console.log("Successfully created user account with uid:", userData.uid);
+        validationMessage.innerHTML = 'Successfully created user account';
+        console.log('Successfully created user account with uid:', userData.uid);
       }
     });
   }

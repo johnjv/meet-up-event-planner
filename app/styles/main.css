@@ -188,3 +188,6 @@ input {
 .mdl-layout.view-events section.card {
   margin-bottom: 2em;
 }
+ button[type="submit"] {
+   margin: 1em 0;
+ }

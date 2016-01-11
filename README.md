@@ -1,8 +1,9 @@
 # Meet-up Event Planner
+[https://meet-up-event-planner.firebaseapp.com](https://meet-up-event-planner.firebaseapp.com)
 
 ## Overview
 
-A responsive web application that allows the user to establish a meet-up event. 
+A responsive web application that allows the user to establish a meet-up event.
 
 ## Prerequisites
 

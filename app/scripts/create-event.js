@@ -102,13 +102,6 @@
           var name = className.slice(6);
           var value = elem.value;
 
-          // set default values
-          if (name.indexOf('Month') > -1) {
-            value--;
-          } else if (name.indexOf('Time' > -1)) {
-            value = value || '00:00';
-          }
-
           self[name] = self[name] || new Binding(elem, value);
           elem.binding = elem.binding || self[name];
 

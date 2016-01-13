@@ -91,6 +91,7 @@
       this.value = value;
       this.hasChanged = false;
       this.oninput = function() {};
+      this.onchange = function() {};
     }
 
     // pulls values from elems of class="model model-*" to create Model's raw info and set up 1-way binding
@@ -113,6 +114,16 @@
 
             // for callbacks
             self[name].oninput();
+          };
+
+          // bind data onchange
+          elem.onchange = function() {
+            // self[name].hasChanged = true;
+            // self[name] = self[name] || new Binding(elem, value);
+            // self[name].value = elem.value;
+
+            // for callbacks
+            self[name].onchange();
           };
         }
       });

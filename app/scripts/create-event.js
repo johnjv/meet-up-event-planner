@@ -18,6 +18,7 @@
  */
 
  /* eslint-env browser */
+ /* global Firebase google */
 (function() {
   /**
    * Creates an Array of DOM nodes that match the selector
@@ -50,14 +51,17 @@
         let dataAttr = this.parent.getAttribute('data-guest');
         let guestToRemove = document.querySelector(`[data-guest="${dataAttr}"]`);
         people.removeChild(this.parent);
-        guestsDisplay.removeChild(guestToRemove); // remove from card-detail preview
+        // remove from card-detail preview
+        guestsDisplay.removeChild(guestToRemove);
       };
       enteredPerson.innerHTML = newGuest.value;
-      enteredPerson.setAttribute('data-guest', newGuest.value); // for easy access later
+      // for easy access later
+      enteredPerson.setAttribute('data-guest', newGuest.value);
       enteredPerson.appendChild(deletePerson);
       // add to card-detail preview
       enteredPerson2.innerHTML = newGuest.value;
-      enteredPerson2.setAttribute('data-guest', newGuest.value); // for easy access later
+      // for easy access later
+      enteredPerson2.setAttribute('data-guest', newGuest.value);
       guestsDisplay.appendChild(enteredPerson2);
 
       people.appendChild(enteredPerson);
@@ -146,16 +150,73 @@
     }
     displayElem.innerHTML = inputBinding.value;
   }
+
+  /*
+  Set up Google Maps autocomplete location input
+   */
+  var input = document.getElementById('location');
+  var whereDisplay = document.querySelector('.card-detail-actual.where');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+
+  autocomplete.addListener('place_changed', () => {
+    let place = autocomplete.getPlace();
+    displayWithPlaceholder({
+      value: place.formatted_address
+    }, whereDisplay, 'Location');
+  });
+
+  /*
+  Creating Model
+   */
   var model = new Model();
+
+  // validation methods
+  var validateTitle = function() {
+    return model.title.hasChanged;
+  };
+  var validateDescription = function() {
+    return model.type.hasChanged;
+  };
+  var validateHost = function() {
+    return model.host.hasChanged;
+  };
+  var validateLocation = function() {
+    return model.location.hasChanged;
+  };
+  var validateStartDatetime = function() {
+    return model.starttime.elem.value;
+  };
+  var validateEndDatetime = function() {
+    return model.endtime.elem.value;
+  };
+  var validateAttendees = function() {
+    if (people.length > 0) {
+      return true;
+    }
+    return false;
+  };
+  var validateAttendeeEmails = function() {
+    var areReal = false;
+    var emailRegex = new RegExp('^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$');
+    people.forEach(function(guest, index) {
+      var result = emailRegex.exec(guest.value);
+      if (result && result.index === 0) {
+        if (index === 0) {
+          areReal = true;
+        } else {
+          areReal = areReal && true;
+        }
+      } else {
+        areReal = areReal && false;
+      }
+    });
+    return areReal;
+  };
 
   // Update the view oninput
   model.title.oninput = function() {
     var titleDisplay = document.querySelector('.title-display');
     displayWithPlaceholder(model.title, titleDisplay, 'Untitled Event');
-  };
-
-  model.title.onchange = function() {
-    console.log(model.title.hasChanged);
   };
 
   model.type.oninput = function() {
@@ -178,6 +239,67 @@
     displayWithPlaceholder(model.endtime, endTimeDisplay, 'End Time');
   };
 
+  // update the view onchange
+  model.title.onchange = function() {
+    if (validateTitle()) {
+      this.elem.classList.remove('invalid');
+      this.elem.classList.add('valid');
+    } else {
+      this.elem.classList.remove('valid');
+      this.elem.classList.add('invalid');
+    }
+  };
+
+  model.type.onchange = function() {
+    if (validateDescription()) {
+      this.elem.classList.remove('invalid');
+      this.elem.classList.add('valid');
+    } else {
+      this.elem.classList.remove('valid');
+      this.elem.classList.add('invalid');
+    }
+  };
+
+  model.host.onchange = function() {
+    if (validateHost()) {
+      this.elem.classList.remove('invalid');
+      this.elem.classList.add('valid');
+    } else {
+      this.elem.classList.remove('valid');
+      this.elem.classList.add('invalid');
+    }
+  };
+
+  model.location.onchange = function() {
+    if (validateLocation()) {
+      this.elem.classList.remove('invalid');
+      this.elem.classList.add('valid');
+    } else {
+      this.elem.classList.remove('valid');
+      this.elem.classList.add('invalid');
+    }
+  };
+
+  model.starttime.onchange = function() {
+    if (validateStartDatetime()) {
+      this.elem.classList.remove('invalid');
+      this.elem.classList.add('valid');
+    } else {
+      this.elem.classList.remove('valid');
+      this.elem.classList.add('invalid');
+    }
+  };
+
+  model.endtime.onchange = function() {
+    if (validateEndDatetime()) {
+      this.elem.classList.remove('invalid');
+      this.elem.classList.add('valid');
+    } else {
+      this.elem.classList.remove('valid');
+      this.elem.classList.add('invalid');
+    }
+  };
+
   function validate() {
     var self = this;
     var allGood = false;
@@ -185,42 +307,17 @@
     var people = getDomNodeArray('.people>div');
 
     var validations = [{
-      errorMessage: 'Please include a title.',
-      validationMethod: function() {
-        return model.title.hasChanged;
-      }
+      errorMessage: 'Please include an event title.',
+      validationMethod: validateTitle
     }, {
-      errorMessage: 'Please include a description.',
-      validationMethod: function() {
-        return model.description.hasChanged;
-      }
+      errorMessage: 'Please include an event description.',
+      validationMethod: validateDescription
     }, {
-      errorMessage: 'Please include guests.',
-      validationMethod: function() {
-        if (people.length > 0) {
-          return true;
-        }
-        return false;
-      }
+      errorMessage: 'Please include at least one attendee.',
+      validationMethod: validateAttendees
     }, {
-      errorMessage: 'Please include valid email addresses.',
-      validationMethod: function() {
-        var areReal = false;
-        var emailRegex = new RegExp('^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$');
-        people.forEach(function(guest, index) {
-          var result = emailRegex.exec(guest.value);
-          if (result && result['index'] === 0) {
-            if (index === 0) {
-              areReal = true;
-            } else {
-              areReal = areReal && true;
-            }
-          } else {
-            areReal = areReal && false;
-          }
-        });
-        return areReal;
-      }
+      errorMessage: 'Please include a valid email addresses.',
+      validationMethod: validateAttendeeEmails
     }];
 
     validations.forEach(function(val, index) {
@@ -254,18 +351,4 @@
       alert('Valid form. Thanks for submitting!');
     }
   };
-
-  /*
-  Set up Google Maps autocomplete location input
-   */
-  var input = document.getElementById('location');
-  var whereDisplay = document.querySelector('.card-detail-actual.where');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-
-  autocomplete.addListener('place_changed', () => {
-    let place = autocomplete.getPlace();
-    displayWithPlaceholder({
-      value: place.formatted_address
-    }, whereDisplay, 'Location');
-  });
 })();

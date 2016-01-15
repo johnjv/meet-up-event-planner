@@ -39,6 +39,7 @@
   var newGuest = document.querySelector('input.new-guest');
   var people = document.querySelector('.attendees');
   var guestsDisplay = document.querySelector('.card-detail-actual.guests');
+  var addButton = document.querySelector('#add-attendee');
   newGuest.onkeydown = function(evt) {
     if (evt.keyIdentifier === 'Enter') {
       let enteredPerson = document.createElement('div');
@@ -68,6 +69,34 @@
       newGuest.value = '';
     }
   };
+  addButton.onclick = function() {
+    let enteredPerson = document.createElement('div');
+    let enteredPerson2 = document.createElement('div');
+    let deletePerson = document.createElement('button');
+    deletePerson.innerHTML = '-';
+    deletePerson.parent = enteredPerson;
+
+    deletePerson.onclick = function() {
+      let dataAttr = this.parent.getAttribute('data-guest');
+      let guestToRemove = document.querySelector(`[data-guest="${dataAttr}"]`);
+      people.removeChild(this.parent);
+      // remove from card-detail preview
+      guestsDisplay.removeChild(guestToRemove);
+    };
+    enteredPerson.innerHTML = newGuest.value;
+    // for easy access later
+    enteredPerson.setAttribute('data-guest', newGuest.value);
+    enteredPerson.appendChild(deletePerson);
+    // add to card-detail preview
+    enteredPerson2.innerHTML = newGuest.value;
+    // for easy access later
+    enteredPerson2.setAttribute('data-guest', newGuest.value);
+    guestsDisplay.appendChild(enteredPerson2);
+
+    people.appendChild(enteredPerson);
+    newGuest.value = '';
+  };
+
   /*
   Adding functionality to hide/show guest in card-detail preview
    */

@@ -268,64 +268,70 @@
     displayWithPlaceholder(model.endtime, endTimeDisplay, 'End Time');
   };
 
+  function displayValid(model) {
+    model.elem.classList.remove('invalid');
+    model.elem.classList.add('valid');
+
+    let validationIcon = model.elem.parentElement.previousElementSibling;
+    if (validationIcon.classList.contains('material-icons')) {
+      validationIcon.textContent = 'checkmark';
+    }
+  }
+  function displayInvalid(model) {
+    model.elem.classList.remove('valid');
+    model.elem.classList.add('invalid');
+
+    let validationIcon = model.elem.parentElement.previousElementSibling;
+    if (validationIcon.classList.contains('material-icons')) {
+      validationIcon.textContent = 'error';
+    }
+  }
   // update the view onchange
   model.title.onchange = function() {
     if (validateTitle()) {
-      this.elem.classList.remove('invalid');
-      this.elem.classList.add('valid');
+      displayValid(this);
     } else {
-      this.elem.classList.remove('valid');
-      this.elem.classList.add('invalid');
+      displayInvalid(this);
     }
   };
 
   model.type.onchange = function() {
     if (validateDescription()) {
-      this.elem.classList.remove('invalid');
-      this.elem.classList.add('valid');
+      displayValid(this);
     } else {
-      this.elem.classList.remove('valid');
-      this.elem.classList.add('invalid');
+      displayInvalid(this);
     }
   };
 
   model.host.onchange = function() {
     if (validateHost()) {
-      this.elem.classList.remove('invalid');
-      this.elem.classList.add('valid');
+      displayValid(this);
     } else {
-      this.elem.classList.remove('valid');
-      this.elem.classList.add('invalid');
+      displayInvalid(this);
     }
   };
 
   model.location.onchange = function() {
     if (validateLocation()) {
-      this.elem.classList.remove('invalid');
-      this.elem.classList.add('valid');
+      displayValid(this);
     } else {
-      this.elem.classList.remove('valid');
-      this.elem.classList.add('invalid');
+      displayInvalid(this);
     }
   };
 
   model.starttime.onchange = function() {
     if (validateStartDatetime()) {
-      this.elem.classList.remove('invalid');
-      this.elem.classList.add('valid');
+      displayValid(this);
     } else {
-      this.elem.classList.remove('valid');
-      this.elem.classList.add('invalid');
+      displayInvalid(this);
     }
   };
 
   model.endtime.onchange = function() {
     if (validateEndDatetime()) {
-      this.elem.classList.remove('invalid');
-      this.elem.classList.add('valid');
+      displayValid(this);
     } else {
-      this.elem.classList.remove('valid');
-      this.elem.classList.add('invalid');
+      displayInvalid(this);
     }
   };
 

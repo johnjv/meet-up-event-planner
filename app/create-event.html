@@ -100,12 +100,14 @@
                         <h3>Create a new event</h3>
                           <div class="input split">
                               <label for="name" class="input-type">Event Name</label>
+                              <i id="validation-icon" class="material-icons"></i>
                               <div class="input-actual">
                                   <input id="name" name="name" type="text" class="model model-title title" placeholder="Event name" required autofocus="autofocus">
                               </div>
                           </div>
                           <div class="input split">
                               <label for="event-type" class="input-type">Event Type</label>
+                              <i id="validation-icon" class="material-icons"></i>
                               <div class="input-actual">
                                   <input list="events" name="event-type" class="model model-type" placeholder="Event type" id="event-type" required>
                                   <datalist id="events" class="model model-type type">
@@ -121,6 +123,7 @@
                           </div>
                           <div class="input split">
                               <label for="host" class="input-type">Host</label>
+                              <i id="validation-icon" class="material-icons"></i>
                               <div class="input-actual">
                                   <input id="host" name="host" placeholder="Host name" type="text" class="model model-host host" required>
                               </div>
@@ -128,13 +131,15 @@
 
                           <div class="input split">
                             <label for="start-datetime" class="input-type">Start time</label>
-                              <div class="input-actual">
+                            <i id="validation-icon" class="material-icons"></i>
+                            <div class="input-actual">
                               <input type="datetime-local" class="model model-starttime" name="start-datetime" id="start-datetime" required>
                             </div>
                           </div>
 
                           <div class="input split">
                             <label for="end-datetime" class="input-type">End time</label>
+                            <i id="validation-icon" class="material-icons"></i>
                             <div class="input-actual">
                               <input type="datetime-local" class="model model-endtime" name="end-datetime" id="end-datetime" required>
                             </div>
@@ -143,6 +148,7 @@
 
                           <div class="input split">
                               <label for="location" class="input-type">Location</label>
+                              <i id="validation-icon" class="material-icons"></i>
                               <div class="input-actual">
                                   <input id="location" name="location" type="text" class="model model-location" required>
                               </div>

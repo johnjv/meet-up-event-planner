@@ -69,14 +69,16 @@
       newGuest.value = '';
     }
   };
-  addButton.onclick = function() {
+  addButton.onclick = function(event) {
+    event.preventDefault();
     let enteredPerson = document.createElement('div');
     let enteredPerson2 = document.createElement('div');
     let deletePerson = document.createElement('button');
     deletePerson.innerHTML = '-';
     deletePerson.parent = enteredPerson;
 
-    deletePerson.onclick = function() {
+    deletePerson.onclick = function(event) {
+      event.preventDefault();
       let dataAttr = this.parent.getAttribute('data-guest');
       let guestToRemove = document.querySelector(`[data-guest="${dataAttr}"]`);
       people.removeChild(this.parent);

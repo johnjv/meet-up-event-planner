@@ -42,6 +42,13 @@
   var addButton = document.querySelector('#add-attendee');
   newGuest.onkeydown = function(evt) {
     if (evt.keyIdentifier === 'Enter') {
+      let emailRegex = new RegExp('^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$');
+      if(!emailRegex.test(newGuest.value)) {
+        newGuest.classList.add('invalid');
+        newGuest.setCustomValidity('Please enter a valid email address');
+        return;
+      }
+      newGuest.classList.remove('invalid');
       let enteredPerson = document.createElement('div');
       let enteredPerson2 = document.createElement('div');
       let deletePerson = document.createElement('button');
@@ -71,6 +78,13 @@
   };
   addButton.onclick = function(event) {
     event.preventDefault();
+    let emailRegex = new RegExp('^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$');
+    if(!emailRegex.test(newGuest.value)) {
+      newGuest.classList.add('invalid');
+      newGuest.setCustomValidity('Please enter a valid email address');
+      return;
+    }
+    newGuest.classList.remove('invalid');
     let enteredPerson = document.createElement('div');
     let enteredPerson2 = document.createElement('div');
     let deletePerson = document.createElement('button');

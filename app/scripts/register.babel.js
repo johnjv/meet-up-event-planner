@@ -59,6 +59,43 @@ class IssueTracker {
 
 }
 
+/*
+This steps through all of the requirements and adds messages when a requirement fails.
+Just checks the first password because the second should be the same when it runs.
+ */
+function checkRequirements(firstInputIssuesTracker) {
+  let firstPassword = firstPasswordInput.value;
+
+  if (firstPassword.length < 8) {
+    firstInputIssuesTracker.addIssue('fewer than 8 characters');
+  } else if (firstPassword.length > 100) {
+    firstInputIssuesTracker.addIssue('greater than 100 characters');
+  }
+
+  if (!firstPassword.match(/[\!\@\#\$\%\^\&\*]/g)) {
+    firstInputIssuesTracker.addIssue('missing a symbol (!, @, #, $, %, ^, &, *)');
+  }
+
+  if (!firstPassword.match(/\d/g)) {
+    firstInputIssuesTracker.addIssue('missing a number');
+  }
+
+  if (!firstPassword.match(/[a-z]/g)) {
+    firstInputIssuesTracker.addIssue('missing a lowercase letter');
+  }
+
+  if (!firstPassword.match(/[A-Z]/g)) {
+    firstInputIssuesTracker.addIssue('missing an uppercase letter');
+  }
+
+  let illegalCharacterGroup = firstPassword.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g);
+  if (illegalCharacterGroup) {
+    illegalCharacterGroup.forEach(function(illegalChar) {
+      firstInputIssuesTracker.addIssue('includes illegal character: ' + illegalChar);
+    });
+  }
+}
+
 submit.onclick = function() {
   /*
   Don't forget to grab the input's .value!
@@ -74,56 +111,21 @@ submit.onclick = function() {
   let secondInputIssuesTracker = new IssueTracker();
 
   /*
-  This steps through all of the requirements and adds messages when a requirement fails.
-  Just checks the first password because the second should be the same when it runs.
-   */
-  function checkRequirements() {
-    if (firstPassword.length < 8) {
-      firstInputIssuesTracker.addIssue('fewer than 8 characters');
-    } else if (firstPassword.length > 100) {
-      firstInputIssuesTracker.addIssue('greater than 100 characters');
-    }
-
-    if (!firstPassword.match(/[\!\@\#\$\%\^\&\*]/g)) {
-      firstInputIssuesTracker.addIssue('missing a symbol (!, @, #, $, %, ^, &, *)');
-    }
-
-    if (!firstPassword.match(/\d/g)) {
-      firstInputIssuesTracker.addIssue('missing a number');
-    }
-
-    if (!firstPassword.match(/[a-z]/g)) {
-      firstInputIssuesTracker.addIssue('missing a lowercase letter');
-    }
-
-    if (!firstPassword.match(/[A-Z]/g)) {
-      firstInputIssuesTracker.addIssue('missing an uppercase letter');
-    }
-
-    let illegalCharacterGroup = firstPassword.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g);
-    if (illegalCharacterGroup) {
-      illegalCharacterGroup.forEach(function(illegalChar) {
-        firstInputIssuesTracker.addIssue('includes illegal character: ' + illegalChar);
-      });
-    }
-  }
-
-  /*
   Here's the first validation check. Gotta make sure they match.
    */
-  if (firstPassword === secondPassword && firstPassword.length > 0) {
-    /*
-    They match, so make sure the rest of the requirements have been met.
-     */
-    checkRequirements();
-  } else {
-    secondInputIssuesTracker.addIssue('Passwords must match!');
-  }
+  checkRequirements(firstInputIssuesTracker);
 
   /*
   Get the validation message strings after all the requirements have been checked.
    */
   let firstInputIssues = firstInputIssuesTracker.getIssues();
+
+  if(firstInputIssues === "") {
+    if (firstPassword !== secondPassword) {
+      secondInputIssuesTracker.addIssue('Passwords must match!');
+    }
+  }
+
   let secondInputIssues = secondInputIssuesTracker.getIssues();
 
   /*
@@ -132,9 +134,6 @@ submit.onclick = function() {
   firstPasswordInput.setCustomValidity(firstInputIssues);
   secondPasswordInput.setCustomValidity(secondInputIssues);
 
-  /*
-  You would probably replace this with a POST message in a real app.
-   */
   if (firstInputIssues.length + secondInputIssues.length === 0) {
     firebase.createUser({
       email: emailInput.value,
@@ -149,4 +148,21 @@ submit.onclick = function() {
       }
     });
   }
+};
+
+firstPasswordInput.oninput = function() {
+  let firstInputIssuesTracker = new IssueTracker();
+  /*
+  Here's the first validation check. Gotta make sure first password is correct.
+   */
+  checkRequirements(firstInputIssuesTracker);
+  /*
+  Get the validation message strings after all the requirements have been checked.
+   */
+  let firstInputIssues = firstInputIssuesTracker.getIssues();
+
+  /*
+  Let input.setCustomValidity() do its magic :)
+   */
+  firstPasswordInput.setCustomValidity(firstInputIssues);
 };

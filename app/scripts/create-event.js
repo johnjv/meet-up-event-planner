@@ -400,4 +400,4 @@
       alert('Valid form. Thanks for submitting!');
     }
   };
-})();
+}());

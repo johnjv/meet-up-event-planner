@@ -17,8 +17,8 @@
  *
  */
 
- /* eslint-env browser */
- /* global Firebase */
+/* eslint-env browser */
+/* global Firebase */
 (function() {
   'use strict';
 
@@ -167,4 +167,4 @@
      */
     firstPasswordInput.setCustomValidity(firstInputIssues);
   };
-})();
+}());

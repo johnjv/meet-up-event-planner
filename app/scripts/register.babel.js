@@ -29,6 +29,7 @@
   let secondPasswordInput = document.querySelector('input[name="repeat-password"]');
   let submit = document.querySelector('button[type="submit"]');
   let validationMessage = document.querySelector('#validation-message');
+  let notification = document.querySelector('.mdl-js-snackbar');
 
   /*
   I'm using this IssueTracker to help me format my validation messages.
@@ -97,7 +98,8 @@
     }
   }
 
-  submit.onclick = function() {
+  submit.onclick = function(event) {
+    event.preventDefault();
     /*
     Don't forget to grab the input's .value!
      */
@@ -142,10 +144,14 @@
       }, function(error, userData) {
         if (error) {
           validationMessage.innerHTML = error;
+          notification.MaterialSnackbar.showSnackbar({message: 'Error creating user'});
           console.log('Error creating user:', error);
         } else {
-          validationMessage.innerHTML = 'Successfully created user account';
-          console.log('Successfully created user account with uid:', userData.uid);
+          //validationMessage.innerHTML = 'Successfully created user account';
+          notification.MaterialSnackbar.showSnackbar({message: 'Success! Redirecting...'});
+          window.setTimeout(function(){
+            window.location = 'create-event.html';
+          }, 2000);
         }
       });
     }
